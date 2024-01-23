@@ -1,13 +1,12 @@
-import React from 'react';
-import logo from '../../logo.svg';
 import './App.css';
-import MainApp from '../MainApp';
+import MainApp, { Todo } from '../MainApp';
 import {
     useSelector,
 } from 'react-redux';
 
 function App() {
-    const todos = useSelector((state: {list: { todos: any[] }}) => state.list.todos);
+  // Should define a Todo type to replace any
+  const todos = useSelector((state: {list: { todos: Todo[] }}) => state.list.todos);
   return (
       // туду лист для юзеров:
     <div className="App main">

@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './InputNewTodo.module.css'
+import { Todo } from '../MainApp';
 
 type InputNewTodoProps = {
     todoTitle: string,
     onChange: (todoTitle: string) => void,
-    onSubmit: (todo: any) => void,
+    onSubmit: (todo: Todo) => void,
 
 }
 type InputNewTodoState = {
@@ -28,12 +29,11 @@ export class InputNewTodo extends React.Component<InputNewTodoProps, InputNewTod
         }
 
         event.preventDefault();
+        const title = this.state.value.trim();
 
-        var val = this.state.value.trim();
-
-        if (val) {
+        if (title) {
             this.props.onSubmit({
-                title: this.state.value,
+                title,
                 isDone: false,
             });
             this.props.onChange('');
